@@ -14,7 +14,7 @@
         <div class="header">
             <h1>Math Sprint Game</h1>
         </div>
-        
+
         <!-- splash page -->
         <div class="card" id="splash-page" hidden>
             <form id="start-form">
@@ -71,49 +71,33 @@
         </div>
 
         <!-- game page -->
-        <div class="card" id="game-page">
+        <div class="card" id="game-page" hidden>
             <!-- item container -->
-            <div class="item-container">
-                <div class="selected-item">
-
-                </div>
-                <div class="item">
-                    <h1>3 x 3 = 30</h1>
-                </div>
-                <div class="item">
-                    <h1>3 x 3 = 30</h1>
-                </div>
-                <div class="item">
-                    <h1>3 x 3 = 30</h1>
-                </div>
-                <div class="item">
-                    <h1>3 x 3 = 30</h1>
-                </div>
-                <div class="item">
-                    <h1>3 x 3 = 30</h1>
-                </div>
-                <div class="item">
-                    <h1>3 x 3 = 30</h1>
-                </div>
-                <div class="item">
-                    <h1>3 x 3 = 30</h1>
-                </div>
-                <div class="item">
-                    <h1>3 x 3 = 30</h1>
-                </div>
-                <div class="item">
-                    <h1>3 x 3 = 30</h1>
-                </div>
-                <div class="item">
-                    <h1>3 x 3 = 30</h1>
-                </div>
-            </div>
+            <div class="item-container"></div>
             <!-- Right / wrong buttons -->
             <div class="item-footer">
                 <button class="wrong">Wrong</button>
                 <button class="right">Right</button>
             </div>
         </div>
+
+
+        <!-- score page -->
+        <div class="card" id="score-page">
+            <!-- score container -->
+            <div class="score-container">
+                <h1 class="title">Your Time</h1>
+                <h1 class="final-time">3.4s</h1>
+                <h1 class="base-time">Base Time: 2.4s</h1>
+                <h1 class="penalty-time">Penalty: +1.0s</h1>
+            </div>
+            <!-- play again button -->
+            <div class="score-footer">
+                <button class="play-again">Play Again</button>
+            </div>
+        </div>
+
+
     </div>
     <!-- Script -->
     <script src="script.js"></script>
