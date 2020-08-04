@@ -83,6 +83,11 @@ function createEquations() {
 //   itemContainer.appendChild(bottomSpacer);
 // }
 
+// navigate from splash page to countdown page
+const showCountDown = () => {
+  countdownPage.hidden = false
+  splashPage.hidden = true
+}
 
 // get the value from the selected radio btn
 const getRadioValue = () => {
@@ -100,6 +105,9 @@ const selectQuestionAmount = (e) => {
   e.preventDefault()
   questionAmount = getRadioValue()
   console.log("question amount", questionAmount)
+  if (questionAmount) {
+    showCountDown()
+  }
 }
 
 startForm.addEventListener("click", () => {
