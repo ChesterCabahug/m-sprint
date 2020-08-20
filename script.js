@@ -32,6 +32,13 @@ const wrongFormat = [];
 
 // Scroll
 
+
+// displays game page
+showGamePage = () => {
+    gamePage.hidden = false
+    countdownPage.hidden = true
+}
+
 // Get Random Number up to a max number
 getRandomInt = max => {
     return Math.floor(Math.random() * Math.floor(max))
@@ -69,29 +76,49 @@ function createEquations() {
     equationsArray.push(equationObject);
   }
   shuffle(equationsArray)
-  console.log("equations array:", equationsArray);
+}
+
+// Add equations to DOM
+equationsToDOM = () => {
+    equationsArray.forEach((equation) => {
+        // item
+        // reminder: we do this instead of innerHTML since this one is highly performant
+        const item = document.createElement("div")
+        item.classList.add("item")
+
+        // equation text
+        const equationText = document.createElement("h1")
+        equationText.textContent = equation.value
+
+        // append 
+        item.appendChild(equationText)
+        
+        itemContainer.appendChild(item)
+    })
 }
 
 // Dynamically adding correct/incorrect equations
-// function populateGamePage() {
-//   // Reset DOM, Set Blank Space Above
-//   itemContainer.textContent = '';
-//   // Spacer
-//   const topSpacer = document.createElement('div');
-//   topSpacer.classList.add('height-240');
-//   // Selected Item
-//   const selectedItem = document.createElement('div');
-//   selectedItem.classList.add('selected-item');
-//   // Append
-//   itemContainer.append(topSpacer, selectedItem);
+function populateGamePage() {
+  // Reset DOM, Set Blank Space Above
+  itemContainer.textContent = '';
+  // Spacer
+  const topSpacer = document.createElement('div');
+  topSpacer.classList.add('height-240');
+  // Selected Item
+  const selectedItem = document.createElement('div');
+  selectedItem.classList.add('selected-item');
+  // Append
+  itemContainer.append(topSpacer, selectedItem);
 
-//   // Create Equations, Build Elements in DOM
+  // Create Equations, Build Elements in DOM
+  createEquations()
+  equationsToDOM()
 
-//   // Set Blank Space Below
-//   const bottomSpacer = document.createElement('div');
-//   bottomSpacer.classList.add('height-500');
-//   itemContainer.appendChild(bottomSpacer);
-// }
+  // Set Blank Space Below
+  const bottomSpacer = document.createElement('div');
+  bottomSpacer.classList.add('height-500');
+  itemContainer.appendChild(bottomSpacer);
+}
 
 // displays 3, 2, 1, go!
 const countdownStart = () => {
@@ -113,7 +140,10 @@ const showCountDown = () => {
   countdownPage.hidden = false
   splashPage.hidden = true
   countdownStart()
-  createEquations()
+  populateGamePage()
+  setTimeout(() => {
+      showGamePage()
+  }, 400);
 }
 
 // get the value from the selected radio btn
