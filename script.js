@@ -40,11 +40,33 @@ let finalTimeDisplay = "0.0s";
 // Scroll
 let valueY = 0;
 
+// stop timer, process results, then go to score page
+const checkTime = () => {
+    console.log(timePlayed);
+    if (playerGuessArray.length === questionAmount) {
+        console.log("player guess array: ", playerGuessArray);
+        clearInterval(timer);
+    }
+};
+
+// add a tenth of a second to timePlayed
+const addTime = () => {
+    timePlayed += 0.1;
+    checkTime();
+};
+
+// start timer when game page is clicked
+const startTimer = () => {
+    // reset times
+    timePlayed = 0;
+    penaltyTime = 0;
+    finalTime = 0;
+    timer = setInterval(addTime, 100);
+    gamePage.removeEventListener("click", startTimer);
+};
 
 // Scroll, Store user selection in playerGuessArray
 const select = (guessedTrue) => {
-    console.log("player guess array: ", playerGuessArray);
-
     // scroll 80px
     valueY += 80;
     itemContainer.scroll(0, valueY);
@@ -208,3 +230,4 @@ startForm.addEventListener("click", () => {
 
 // event listeners
 startForm.addEventListener("submit", selectQuestionAmount);
+gamePage.addEventListener("click", startTimer);
